@@ -12,7 +12,7 @@ const ArrowCarousel: React.FC<ArrowCarouselProps> = ({ src, onClick }) => {
           color: "white",
           backgroundColor: "grey",
           borderRadius: "5px",
-          padding: "40px 10px",
+          padding: "2.2vw  0.6vw",
           opacity: 0.2,
           transition: "opacity 0.6s ease",
         }}

@@ -18,20 +18,30 @@ const Home = () => {
 
   useEffect(() => {
     const fetchFilms = async () => {
-      const response = await fetch(
-        "https://api.themoviedb.org/3/movie/now_playing",
-        {
-          method: "GET",
-          headers: {
-            accept: "application/json",
-            Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZjU5NTZkMjQ1MjkwYzU5MTljNmUxMjFlMjMwMzU2ZiIsIm5iZiI6MTczOTg4NDg4Ny4yMzUwMDAxLCJzdWIiOiI2N2I0ODk1NzVkYzk4OGIxYmI5ZmNiZmMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.38PUZIT9Z-ybX4JPzH-lFLA70DwSBVNcFxvxncRiGiw`, // Remplace avec ton token
-          },
+      try {
+        const response = await fetch(
+          "https://api.themoviedb.org/3/movie/now_playing",
+          {
+            method: "GET",
+            headers: {
+              accept: "application/json",
+              Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZjU5NTZkMjQ1MjkwYzU5MTljNmUxMjFlMjMwMzU2ZiIsIm5iZiI6MTczOTg4NDg4Ny4yMzUwMDAxLCJzdWIiOiI2N2I0ODk1NzVkYzk4OGIxYmI5ZmNiZmMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.38PUZIT9Z-ybX4JPzH-lFLA70DwSBVNcFxvxncRiGiw`,
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(`Erreur HTTP: ${response.status}`);
         }
-      );
-      const data = await response.json();
-      setMovies(data.results);
-      console.log(data.results);
+
+        const data = await response.json();
+        setMovies(data.results);
+        console.log(data.results);
+      } catch (error) {
+        console.error("Erreur lors de la récupération des films :", error);
+      }
     };
+
     fetchFilms();
   }, []);
 

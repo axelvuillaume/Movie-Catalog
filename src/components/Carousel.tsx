@@ -41,7 +41,7 @@ const Carousel: React.FC<CarouselProps> = ({
       <div
         style={{
           position: "absolute",
-          bottom: "15%",
+          bottom: "13%",
           left: "0%",
           zIndex: "10",
         }}
@@ -52,7 +52,7 @@ const Carousel: React.FC<CarouselProps> = ({
       <div
         style={{
           position: "absolute",
-          bottom: "15%",
+          bottom: "13%",
           right: "0%",
           zIndex: "10",
         }}

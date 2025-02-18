@@ -1,10 +1,17 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Movie } from "../types";
 
 interface InfoMovieHomeProps {
   movie: Movie;
 }
 const InfoMovieHome: React.FC<InfoMovieHomeProps> = ({ movie }) => {
+  const navigate = useNavigate();
+
+  const handleMoreInfoClick = () => {
+    navigate(`/movie/${movie.id}`);
+  };
+
   return (
     <div className="infoFilmHome">
       <div
@@ -32,6 +39,7 @@ const InfoMovieHome: React.FC<InfoMovieHomeProps> = ({ movie }) => {
             padding: "9px 7px",
             cursor: "pointer",
           }}
+          onClick={handleMoreInfoClick}
         >
           More Info
         </button>

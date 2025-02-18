@@ -24,9 +24,9 @@ const Menu = () => {
           display: "flex",
         }}
       >
-        <ButtonMenu label="New Movie" />
-        <ButtonMenu label="Movie" />
-        <ButtonMenu label="TV Series" />
+        <ButtonMenu label="New Movie" page="/" />
+        <ButtonMenu label="Movie" page="movie" />
+        <ButtonMenu label="TV Series" page="movie" />
       </div>
     </div>
   );

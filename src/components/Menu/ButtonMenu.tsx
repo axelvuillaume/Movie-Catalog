@@ -1,8 +1,17 @@
+import { useNavigate } from "react-router-dom";
+
 interface ButtonMenuProps {
   label: string;
+  page: string;
 }
 
-const ButtonMenu: React.FC<ButtonMenuProps> = ({ label }) => {
+const ButtonMenu: React.FC<ButtonMenuProps> = ({ label, page }) => {
+  const navigate = useNavigate();
+
+  const handleMoreInfoClick = () => {
+    navigate(page);
+  };
+
   return (
     <div style={{ margin: " 0 20px", display: "flex" }}>
       <button
@@ -13,8 +22,7 @@ const ButtonMenu: React.FC<ButtonMenuProps> = ({ label }) => {
           fontFamily: "Arial Greek",
         }}
       >
-        {" "}
-        {label}{" "}
+        {label}
       </button>
     </div>
   );
