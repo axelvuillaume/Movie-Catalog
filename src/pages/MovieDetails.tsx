@@ -147,13 +147,14 @@ const MovieDetails: React.FC = () => {
             rel="noopener noreferrer"
             style={{
               marginTop: "5vh",
+              width: "16vw",
             }}
           >
             <img
               src={`https://img.youtube.com/vi/${trailerKey}/hqdefault.jpg`}
               alt="Bande-annonce"
               style={{
-                width: "17vw",
+                width: "100%",
               }}
             />
           </a>
