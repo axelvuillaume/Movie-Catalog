@@ -10,7 +10,15 @@ const SelectFilters: React.FC<SelectFiltersProps> = ({
   onChange,
 }) => {
   return (
-    <div style={{ display: "flex" }}>
+    <div
+      style={{
+        display: "flex",
+        backgroundColor: "rgba(128, 128, 128, 0.6)",
+        borderRadius: "8px",
+        padding: "0px 4px",
+        fontSize: "16px",
+      }}
+    >
       <p>{label}</p>
       <select
         onChange={(e) => onChange(e.target.value)}

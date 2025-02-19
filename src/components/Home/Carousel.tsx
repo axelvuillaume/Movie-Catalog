@@ -20,13 +20,13 @@ const Carousel: React.FC<CarouselProps> = ({
 
   const scrollRight = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: 300, behavior: "smooth" });
+      carouselRef.current.scrollBy({ left: 1200, behavior: "smooth" });
     }
   };
 
   const scrollLeft = () => {
     if (carouselRef.current) {
-      carouselRef.current.scrollBy({ left: -300, behavior: "smooth" });
+      carouselRef.current.scrollBy({ left: -1200, behavior: "smooth" });
     }
   };
 
@@ -35,14 +35,22 @@ const Carousel: React.FC<CarouselProps> = ({
     onMovieClick(movie);
     setSelectedMovieId(movie.id);
   };
-
   return (
-    <div>
+    <div
+      style={{
+        position: "absolute",
+        bottom: "6vh",
+        width: "100%",
+        display: "flex",
+        justifyContent: "center",
+      }}
+    >
       <div
         style={{
           position: "absolute",
-          bottom: "13%",
+          top: "50%",
           left: "0%",
+          transform: "translateY(-50%)",
           zIndex: "10",
         }}
       >
@@ -52,8 +60,9 @@ const Carousel: React.FC<CarouselProps> = ({
       <div
         style={{
           position: "absolute",
-          bottom: "13%",
+          top: "50%",
           right: "0%",
+          transform: "translateY(-50%)",
           zIndex: "10",
         }}
       >
@@ -61,56 +70,45 @@ const Carousel: React.FC<CarouselProps> = ({
       </div>
 
       <div
+        ref={carouselRef}
         style={{
           display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          justifyContent: "center",
+          scrollBehavior: "smooth",
+          margin: "20px 0",
+          padding: "10px 0",
+          overflow: "hidden",
+          width: "100%",
+          position: "relative",
         }}
       >
-        <div
-          ref={carouselRef}
-          style={{
-            display: "flex",
-            scrollBehavior: "smooth",
-            margin: "20px 0",
-            padding: "10px 0",
-            overflow: "hidden",
-            width: "100%",
-            position: "absolute",
-            bottom: "4%",
-          }}
-        >
-          {movies.map((movie) => (
-            <div
-              key={movie.id}
-              onClick={() => handleImageClick(movie)}
-              style={{
-                margin: "0 20px",
-                transition: "transform 0.3s ease",
-                display: "flex",
-                justifyContent: "center", // Centrer les images
-                alignItems: "center",
-              }}
-            >
-              {movie.poster_path && (
-                <img
-                  src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-                  alt={movie.title}
-                  style={{
-                    width: selectedMovieId === movie.id ? "8vw" : "6vw",
-                    height: "auto",
-                    borderRadius: "8px",
-                    filter:
-                      selectedMovieId === movie.id ? "none" : "brightness(0.5)",
-                    transition:
-                      "width 0.5s ease, height 0.5s ease, filter 0.5s ease",
-                  }}
-                />
-              )}
-            </div>
-          ))}
-        </div>
+        {movies.map((movie) => (
+          <div
+            key={movie.id}
+            onClick={() => handleImageClick(movie)}
+            style={{
+              margin: "0 20px",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              cursor: "pointer",
+            }}
+          >
+            {movie.poster_path && (
+              <img
+                src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+                alt={movie.title}
+                style={{
+                  width: selectedMovieId === movie.id ? "8vw" : "6vw",
+                  height: "auto",
+                  borderRadius: "8px",
+                  filter:
+                    selectedMovieId === movie.id ? "none" : "brightness(0.7)",
+                  transition: "width 1s ease, height 1s ease, filter 1s ease",
+                }}
+              />
+            )}
+          </div>
+        ))}
       </div>
     </div>
   );

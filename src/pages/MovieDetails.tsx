@@ -56,20 +56,15 @@ const MovieDetails: React.FC = () => {
     <div>
       <div
         style={{
-          backgroundImage: `linear-gradient(to top, 
-      rgba(0, 0, 0, 1) 0%, 
-      rgba(0, 0, 0, 0.85) 30%, 
-      rgba(0, 0, 0, 0.6) 50%, 
-      rgba(0, 0, 0, 0) 90%
-    ), url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
+          backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
           backgroundSize: "cover",
+          backgroundPosition: "center",
           height: "100vh",
           width: "100%",
-          filter: "blur(6px)",
+          backgroundColor: "rgba(0, 0, 0, 0.85)",
+          backgroundBlendMode: "darken",
         }}
-      >
-        {" "}
-      </div>
+      ></div>
       <div
         style={{
           fontFamily: "'Quicksand', sans-serif, fontWeight: 400",

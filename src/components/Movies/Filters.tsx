@@ -24,12 +24,12 @@ const Filters: React.FC<FiltersProps> = ({
           "Popularity This Month",
           "Popularity This Year",
         ]}
-        label="Sort by: "
+        label="Sort by : "
         onChange={onSortByChange}
       />
       <SelectFilters
         options={["All", "US", "FR", "GB"]}
-        label="Country: "
+        label="Country : "
         onChange={onCountryChange}
       />
     </div>

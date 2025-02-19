@@ -28,6 +28,7 @@ const Card: React.FC<CardProps> = ({ movie }) => {
         boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
         transform: isHovered ? "scale(1.05)" : "scale(1)",
         transition: "transform 0.3s ease-in-out",
+        cursor: "pointer",
       }}
       onClick={handleMoreInfoClick}
     >

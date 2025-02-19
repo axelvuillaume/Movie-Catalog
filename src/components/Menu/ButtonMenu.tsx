@@ -23,6 +23,7 @@ const ButtonMenu: React.FC<ButtonMenuProps> = ({ label, page, isActive }) => {
           color: isHovered ? "lightgray" : "white",
           fontSize: "0.8vw",
           fontFamily: "Arial Greek",
+          cursor: "pointer",
 
           textDecoration: isActive ? "underline" : "none",
         }}

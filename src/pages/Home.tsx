@@ -70,7 +70,7 @@ const Home = () => {
         style={{
           width: "30%",
           position: "absolute",
-          top: "20%",
+          top: "18%",
           left: "5%",
         }}
       >

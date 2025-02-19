@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Movie } from "../../types";
 
@@ -6,6 +6,7 @@ interface InfoMovieHomeProps {
   movie: Movie;
 }
 const InfoMovieHome: React.FC<InfoMovieHomeProps> = ({ movie }) => {
+  const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
 
   const handleMoreInfoClick = () => {
@@ -16,7 +17,7 @@ const InfoMovieHome: React.FC<InfoMovieHomeProps> = ({ movie }) => {
     <div className="infoFilmHome">
       <div
         style={{
-          fontSize: "4vw",
+          fontSize: "3.5vw",
           color: "white",
         }}
       >
@@ -34,13 +35,18 @@ const InfoMovieHome: React.FC<InfoMovieHomeProps> = ({ movie }) => {
         <button
           style={{
             all: "unset",
-            backgroundColor: "white",
+            backgroundColor: isHovered ? "gray" : "white",
+            color: isHovered ? "white" : "black",
             borderRadius: "5px",
-            padding: "12px 10px",
+            padding: "1.8% 1.5%",
             fontSize: "1vw",
             cursor: "pointer",
+            marginTop: "3vh",
+            transition: "background-color 0.3s ease, color 0.3s ease",
           }}
           onClick={handleMoreInfoClick}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
           More Info
         </button>

@@ -7,12 +7,13 @@ const Menu = () => {
     <div
       style={{
         position: "absolute",
+        backgroundColor: "rgba(128, 128, 128, 0.6)",
         top: "0",
-        left: "5%",
         zIndex: "10",
         display: "flex",
-        justifyContent: "space-between",
-        width: "90%",
+        justifyContent: "space-around",
+        width: "100%",
+        gap: "15vw",
       }}
     >
       <div
@@ -22,7 +23,7 @@ const Menu = () => {
       >
         <h1
           style={{
-            fontSize: "1.5vw",
+            fontSize: "1.3vw",
           }}
         >
           TITREINSNAE
@@ -31,6 +32,7 @@ const Menu = () => {
       <div
         style={{
           display: "flex",
+          gap: "6vw",
         }}
       >
         <ButtonMenu

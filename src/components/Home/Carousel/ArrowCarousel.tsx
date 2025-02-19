@@ -12,15 +12,15 @@ const ArrowCarousel: React.FC<ArrowCarouselProps> = ({ src, onClick }) => {
           color: "white",
           backgroundColor: "grey",
           borderRadius: "5px",
-          padding: "2.2vw  0.6vw",
-          opacity: 0.2,
+          padding: "2vw  0vw",
+          opacity: 0.5,
           transition: "opacity 0.6s ease",
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.opacity = "0.8";
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.opacity = "0.2";
+          e.currentTarget.style.opacity = "0.5";
         }}
         onClick={onClick}
       >
