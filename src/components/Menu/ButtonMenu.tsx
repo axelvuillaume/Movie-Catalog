@@ -1,14 +1,17 @@
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface ButtonMenuProps {
   label: string;
   page: string;
+  isActive: boolean;
 }
 
-const ButtonMenu: React.FC<ButtonMenuProps> = ({ label, page }) => {
+const ButtonMenu: React.FC<ButtonMenuProps> = ({ label, page, isActive }) => {
   const navigate = useNavigate();
+  const [isHovered, setIsHovered] = useState(false);
 
-  const handleMoreInfoClick = () => {
+  const handleClick = () => {
     navigate(page);
   };
 
@@ -17,10 +20,15 @@ const ButtonMenu: React.FC<ButtonMenuProps> = ({ label, page }) => {
       <button
         style={{
           all: "unset",
-          color: "white",
-          fontSize: "1em",
+          color: isHovered ? "lightgray" : "white",
+          fontSize: "0.8vw",
           fontFamily: "Arial Greek",
+
+          textDecoration: isActive ? "underline" : "none",
         }}
+        onClick={handleClick}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
         {label}
       </button>

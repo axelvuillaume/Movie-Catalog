@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Movie } from "../types";
+import { Movie } from "../../types";
 
 interface InfoMovieHomeProps {
   movie: Movie;
@@ -36,7 +36,8 @@ const InfoMovieHome: React.FC<InfoMovieHomeProps> = ({ movie }) => {
             all: "unset",
             backgroundColor: "white",
             borderRadius: "5px",
-            padding: "9px 7px",
+            padding: "12px 10px",
+            fontSize: "1vw",
             cursor: "pointer",
           }}
           onClick={handleMoreInfoClick}

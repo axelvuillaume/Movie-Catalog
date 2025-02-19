@@ -1,10 +1,13 @@
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import ButtonMenu from "./Menu/ButtonMenu";
 const Menu = () => {
+  const location = useLocation();
   return (
     <div
       style={{
         position: "absolute",
-        top: "2%",
+        top: "0",
         left: "5%",
         zIndex: "10",
         display: "flex",
@@ -17,16 +20,29 @@ const Menu = () => {
           color: "white",
         }}
       >
-        <h1>TITREINSNAE</h1>
+        <h1
+          style={{
+            fontSize: "1.5vw",
+          }}
+        >
+          TITREINSNAE
+        </h1>
       </div>
       <div
         style={{
           display: "flex",
         }}
       >
-        <ButtonMenu label="New Movie" page="/" />
-        <ButtonMenu label="Movie" page="movie" />
-        <ButtonMenu label="TV Series" page="movie" />
+        <ButtonMenu
+          label="New Movies"
+          page="/"
+          isActive={location.pathname === "/"}
+        />
+        <ButtonMenu
+          label="Movies"
+          page="movie"
+          isActive={location.pathname === "/movie"}
+        />
       </div>
     </div>
   );

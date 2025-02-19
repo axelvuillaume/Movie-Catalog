@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Carousel from "../components/Carousel";
-import InfoMovieHome from "../components/InfoMovieHome";
+import Carousel from "../components/Home/Carousel";
+import InfoMovieHome from "../components/Home/InfoMovieHome";
 import { Movie } from "../types";
 
 const Home = () => {
@@ -36,7 +36,12 @@ const Home = () => {
 
         const data = await response.json();
         setMovies(data.results);
-        console.log(data.results);
+
+        if (data.results.length > 0) {
+          const firstMovie = data.results[0];
+          setSelectedMovie(firstMovie);
+          changeBackground(firstMovie.backdrop_path || "");
+        }
       } catch (error) {
         console.error("Erreur lors de la récupération des films :", error);
       }

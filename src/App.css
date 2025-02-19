@@ -1,7 +1,13 @@
-.App {
-  /* background-color: darkcyan;
+html,
+body {
   height: 100%;
-  width: 100%; */
+  margin: 0;
+}
+
+.App {
+  background-color: #0d0f11;
+  height: 100%;
+  width: 100%;
 }
 
 .App-logo {
