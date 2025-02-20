@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Movie } from "../types";
-import SearchBar from "./Movies/SearchBar";
+import SearchBar from "./Menu/SearchBar";
 
 const Search: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");

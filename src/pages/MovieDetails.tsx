@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Distribution from "../components/MovieDetails/Distribution";
 import TableDetails from "../components/MovieDetails/TableDetails";
-import { Movie } from "../types";
+import { Movie, MovieCredits } from "../types";
 const MovieDetails: React.FC = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState<Movie | null>(null);
   const [trailerKey, setTrailerKey] = useState<string | null>(null);
+  const [credits, setCredits] = useState<MovieCredits | null>(null);
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        const response = await fetch(
+        const movieResponse = await fetch(
           `https://api.themoviedb.org/3/movie/${id}?language=en-US`,
           {
             method: "GET",
@@ -20,8 +22,8 @@ const MovieDetails: React.FC = () => {
             },
           }
         );
-        const data = await response.json();
-        setMovie(data);
+        const movieData = await movieResponse.json();
+        setMovie(movieData);
 
         const videoResponse = await fetch(
           `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`,
@@ -40,6 +42,19 @@ const MovieDetails: React.FC = () => {
         if (trailer) {
           setTrailerKey(trailer.key);
         }
+
+        const creditsResponse = await fetch(
+          `https://api.themoviedb.org/3/movie/${id}/credits`,
+          {
+            method: "GET",
+            headers: {
+              accept: "application/json",
+              Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZjU5NTZkMjQ1MjkwYzU5MTljNmUxMjFlMjMwMzU2ZiIsIm5iZiI6MTczOTg4NDg4Ny4yMzUwMDAxLCJzdWIiOiI2N2I0ODk1NzVkYzk4OGIxYmI5ZmNiZmMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.38PUZIT9Z-ybX4JPzH-lFLA70DwSBVNcFxvxncRiGiw`, // Votre token d'authentification
+            },
+          }
+        );
+        const creditsData = await creditsResponse.json();
+        setCredits(creditsData);
       } catch (error) {
         console.error("Error fetching movie details:", error);
       }
@@ -114,7 +129,7 @@ const MovieDetails: React.FC = () => {
               width: "100%",
             }}
           >
-            {movie.original_title}
+            {movie.title}
           </div>
           <div style={{ fontSize: "0.7vw" }}>
             {Math.floor(movie.runtime / 60)}h {movie.runtime % 60}min
@@ -160,6 +175,7 @@ const MovieDetails: React.FC = () => {
           </a>
         </div>
       </div>
+      <Distribution credits={credits} />
     </div>
   );
 };

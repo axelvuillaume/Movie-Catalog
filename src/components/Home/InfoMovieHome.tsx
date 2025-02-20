@@ -21,7 +21,7 @@ const InfoMovieHome: React.FC<InfoMovieHomeProps> = ({ movie }) => {
           color: "white",
         }}
       >
-        {movie.original_title}
+        {movie.title}
       </div>
       <div
         style={{
