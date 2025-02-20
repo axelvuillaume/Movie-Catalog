@@ -18,7 +18,6 @@ const Card: React.FC<CardProps> = ({ movie }) => {
   return (
     <div
       key={movie.id}
-      className="movie-card"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       style={{
@@ -56,7 +55,6 @@ const Card: React.FC<CardProps> = ({ movie }) => {
           {movie.title}
         </h2>
         <p
-          className="movie-rating"
           style={{
             color: "#f5c518",
             fontSize: "14px",

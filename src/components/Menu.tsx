@@ -1,6 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import ButtonMenu from "./Menu/ButtonMenu";
+import Search from "./Search";
 const Menu = () => {
   const location = useLocation();
   return (
@@ -14,6 +15,7 @@ const Menu = () => {
         justifyContent: "space-around",
         width: "100%",
         gap: "15vw",
+        alignItems: "center",
       }}
     >
       <div
@@ -28,6 +30,10 @@ const Menu = () => {
         >
           TITREINSNAE
         </h1>
+      </div>
+      <div>
+        {" "}
+        <Search />
       </div>
       <div
         style={{
