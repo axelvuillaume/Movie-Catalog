@@ -128,7 +128,7 @@ const MovieDetails: React.FC = () => {
           </div>
           <div
             style={{
-              fontSize: isMobile ? "3.5vw" : "3.5vh",
+              fontSize: isMobile ? "5vw" : "3.5vw",
               fontWeight: "bold",
               width: "100%",
             }}
@@ -141,7 +141,7 @@ const MovieDetails: React.FC = () => {
         </div>
         <div
           style={{
-            fontSize: isMobile ? "2.5vw" : "1vw",
+            fontSize: isMobile ? "2.8vw" : "1vw",
             width: isMobile ? "80%" : "30%",
             display: "flex",
             flexDirection: "column",
@@ -166,7 +166,7 @@ const MovieDetails: React.FC = () => {
             rel="noopener noreferrer"
             style={{
               marginTop: "5vh",
-              width: "16vw",
+              width: isMobile ? "30vw" : "16vw",
             }}
           >
             <img
