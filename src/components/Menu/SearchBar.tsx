@@ -28,7 +28,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         type="text"
         value={query}
         onChange={handleChange}
-        placeholder="Rechercher un film..."
+        placeholder="Search a movie"
         style={{
           backgroundColor: "transparent",
           border: "none",
@@ -36,6 +36,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
           padding: ".3vw 1vw",
           color: "white",
           outline: "none",
+          fontSize: "0.7vw",
         }}
       />
       <img

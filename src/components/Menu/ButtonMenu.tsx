@@ -5,9 +5,15 @@ interface ButtonMenuProps {
   label: string;
   page: string;
   isActive: boolean;
+  isMobile: boolean;
 }
 
-const ButtonMenu: React.FC<ButtonMenuProps> = ({ label, page, isActive }) => {
+const ButtonMenu: React.FC<ButtonMenuProps> = ({
+  label,
+  page,
+  isActive,
+  isMobile,
+}) => {
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
 
@@ -21,7 +27,7 @@ const ButtonMenu: React.FC<ButtonMenuProps> = ({ label, page, isActive }) => {
         style={{
           all: "unset",
           color: isHovered ? "lightgray" : "white",
-          fontSize: "0.8vw",
+          fontSize: isMobile ? "6vw" : "0.8vw",
           fontFamily: "'Roboto', sans-serif",
           fontWeight: "bold",
 

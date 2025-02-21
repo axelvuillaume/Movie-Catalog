@@ -3,7 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { Movie } from "../types";
 import SearchBar from "./Menu/SearchBar";
 
-const Search: React.FC = () => {
+interface SearchProps {
+  isMobile: boolean;
+}
+const Search: React.FC<SearchProps> = ({ isMobile }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [movies, setMovies] = useState<Movie[]>([]);
   const [showResults, setShowResults] = useState(false);
@@ -66,6 +69,7 @@ const Search: React.FC = () => {
         display: "flex",
         position: "relative",
         justifyContent: "center",
+        scale: isMobile ? "3" : "1",
       }}
       ref={searchRef}
     >
