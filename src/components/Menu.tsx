@@ -1,22 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { useLocation } from "react-router-dom";
+import useWindowSize from "../hooks/useWindowsSize";
 import ButtonMenu from "./Menu/ButtonMenu";
 import Search from "./Search";
 const MenuIcon = FiMenu as unknown as React.FC;
 const CloseIcon = FiX as unknown as React.FC;
 const Menu = () => {
   const location = useLocation();
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 1085);
+  const isMobile = useWindowSize();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   return (
     <div
@@ -37,7 +30,7 @@ const Menu = () => {
       </div>
       {!isMobile ? (
         <>
-          <Search isMobile={isMobile} />
+          <Search />
           <div style={{ display: "flex", gap: "6vw" }}>
             <ButtonMenu
               label="New Movies"
@@ -82,7 +75,7 @@ const Menu = () => {
             justifyContent: "space-evenly",
           }}
         >
-          <Search isMobile={isMobile} />
+          <Search />
           <ButtonMenu
             label="New Movies"
             page="/"

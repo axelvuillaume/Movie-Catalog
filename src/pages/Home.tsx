@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Carousel from "../components/Home/Carousel";
 import InfoMovieHome from "../components/Home/InfoMovieHome";
+import useWindowSize from "../hooks/useWindowsSize";
+
 import { Movie } from "../types";
 
 const Home = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [selectedMovie, setSelectedMovie] = useState<Movie>();
   const [backgroundImage, setBackgroundImage] = useState<string>("");
+  const isMobile = useWindowSize();
 
   const changeBackground = (backdropPath: string) => {
     setBackgroundImage(`https://image.tmdb.org/t/p/original${backdropPath}`);
@@ -68,10 +71,10 @@ const Home = () => {
     >
       <div
         style={{
-          width: "30%",
+          width: isMobile ? "70%" : "30%",
           position: "absolute",
-          top: "18%",
-          left: "5%",
+          top: isMobile ? "20%" : "18%",
+          left: isMobile ? "15%" : "5%",
         }}
       >
         {selectedMovie && <InfoMovieHome movie={selectedMovie} />}

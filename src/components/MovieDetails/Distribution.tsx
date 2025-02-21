@@ -1,10 +1,13 @@
+import useWindowSize from "../../hooks/useWindowsSize";
 import { MovieCredits } from "../../types";
 import DistributionCard from "./Distribution/DistributionCard";
+
 interface DistributionProps {
   credits: MovieCredits | null;
 }
 
 const Distribution: React.FC<DistributionProps> = ({ credits }) => {
+  const isMobile = useWindowSize();
   return (
     <div>
       {credits ? (
@@ -13,7 +16,7 @@ const Distribution: React.FC<DistributionProps> = ({ credits }) => {
             style={{
               color: "white",
               fontFamily: "'Quicksand', sans-serif, fontWeight: 400",
-              fontSize: "1vw",
+              fontSize: isMobile ? "3.5vw" : "1vh",
               fontWeight: "bold",
               padding: "3vw",
             }}

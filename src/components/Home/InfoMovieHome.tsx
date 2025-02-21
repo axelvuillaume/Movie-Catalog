@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useWindowSize from "../../hooks/useWindowsSize";
 import { Movie } from "../../types";
-
 interface InfoMovieHomeProps {
   movie: Movie;
 }
 const InfoMovieHome: React.FC<InfoMovieHomeProps> = ({ movie }) => {
+  const isMobile = useWindowSize();
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
 
@@ -14,10 +15,10 @@ const InfoMovieHome: React.FC<InfoMovieHomeProps> = ({ movie }) => {
   };
 
   return (
-    <div className="infoFilmHome">
+    <div>
       <div
         style={{
-          fontSize: "3.5vw",
+          fontSize: isMobile ? "8vw" : "3.5vw",
           color: "white",
         }}
       >
@@ -25,7 +26,7 @@ const InfoMovieHome: React.FC<InfoMovieHomeProps> = ({ movie }) => {
       </div>
       <div
         style={{
-          fontSize: "1vw",
+          fontSize: isMobile ? "4vw" : "1vw",
           color: "grey",
         }}
       >
@@ -39,7 +40,7 @@ const InfoMovieHome: React.FC<InfoMovieHomeProps> = ({ movie }) => {
             color: isHovered ? "white" : "black",
             borderRadius: "5px",
             padding: "1.8% 1.5%",
-            fontSize: "1vw",
+            fontSize: isMobile ? "3vw" : "1vw",
             cursor: "pointer",
             marginTop: "3vh",
             transition: "background-color 0.3s ease, color 0.3s ease",

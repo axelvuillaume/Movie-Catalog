@@ -38,7 +38,7 @@ const ButtonMenu: React.FC<ButtonMenuProps> = ({
         onClick={handleClick}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-      >
+      > 
         {label}
       </button>
     </div>

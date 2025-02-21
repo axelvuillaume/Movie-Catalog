@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Distribution from "../components/MovieDetails/Distribution";
 import TableDetails from "../components/MovieDetails/TableDetails";
+import useWindowSize from "../hooks/useWindowsSize";
 import { Movie, MovieCredits } from "../types";
 const MovieDetails: React.FC = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState<Movie | null>(null);
   const [trailerKey, setTrailerKey] = useState<string | null>(null);
   const [credits, setCredits] = useState<MovieCredits | null>(null);
+  const isMobile = useWindowSize();
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -90,6 +92,8 @@ const MovieDetails: React.FC = () => {
           justifyContent: "space-around",
           top: "7vh",
           position: "absolute",
+          flexDirection: isMobile ? "column" : "row",
+          alignItems: isMobile ? "center" : "flex-start",
         }}
       >
         <div
@@ -111,7 +115,7 @@ const MovieDetails: React.FC = () => {
           </div>
           <div
             style={{
-              fontSize: "1vw",
+              fontSize: isMobile ? "3vw" : "1vw",
               fontWeight: "bold",
               display: "flex",
               gap: "15%",
@@ -124,21 +128,21 @@ const MovieDetails: React.FC = () => {
           </div>
           <div
             style={{
-              fontSize: "3.5vw",
+              fontSize: isMobile ? "3.5vw" : "3.5vh",
               fontWeight: "bold",
               width: "100%",
             }}
           >
             {movie.title}
           </div>
-          <div style={{ fontSize: "0.7vw" }}>
+          <div style={{ fontSize: isMobile ? "3vw" : "0.7vw" }}>
             {Math.floor(movie.runtime / 60)}h {movie.runtime % 60}min
           </div>
         </div>
         <div
           style={{
-            fontSize: "1vw",
-            width: "30%",
+            fontSize: isMobile ? "2.5vw" : "1vw",
+            width: isMobile ? "80%" : "30%",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",

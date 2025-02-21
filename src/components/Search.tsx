@@ -1,17 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useWindowSize from "../hooks/useWindowsSize";
 import { Movie } from "../types";
 import SearchBar from "./Menu/SearchBar";
 
-interface SearchProps {
-  isMobile: boolean;
-}
-const Search: React.FC<SearchProps> = ({ isMobile }) => {
+const Search: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [movies, setMovies] = useState<Movie[]>([]);
   const [showResults, setShowResults] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
+  const isMobile = useWindowSize();
 
   useEffect(() => {
     const fetchSearchMovies = async () => {
@@ -69,7 +68,6 @@ const Search: React.FC<SearchProps> = ({ isMobile }) => {
         display: "flex",
         position: "relative",
         justifyContent: "center",
-        scale: isMobile ? "3" : "1",
       }}
       ref={searchRef}
     >
@@ -80,14 +78,14 @@ const Search: React.FC<SearchProps> = ({ isMobile }) => {
           style={{
             position: "absolute",
             top: "100%",
-            width: "20vw",
+            width: isMobile ? "auto" : "20vw",
             backgroundColor: "rgba(31, 27, 27, 0.74)",
             color: "white",
             padding: "10px",
             maxHeight: "300px",
             overflowY: "auto",
             borderRadius: "10px",
-            fontSize: "0.8vw",
+            fontSize: isMobile ? "3.5vw" : "0.7vw",
           }}
         >
           {movies.length === 0 ? (

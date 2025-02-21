@@ -1,4 +1,5 @@
 import { useState } from "react";
+import useWindowSize from "../../hooks/useWindowsSize";
 import SearchLogo from "../../images/search.png";
 
 interface SearchBarProps {
@@ -6,6 +7,7 @@ interface SearchBarProps {
 }
 
 const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
+  const isMobile = useWindowSize();
   const [query, setQuery] = useState("");
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +38,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
           padding: ".3vw 1vw",
           color: "white",
           outline: "none",
-          fontSize: "0.7vw",
+          fontSize: isMobile ? "3.5vw" : "0.7vw",
         }}
       />
       <img
