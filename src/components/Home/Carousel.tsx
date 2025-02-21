@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import useWindowSize from "../../hooks/useWindowsSize";
 import arrowLeft from "../../images/arrowLeft.png";
 import arrowRight from "../../images/arrowRight.png";
 import { Movie } from "../../types";
@@ -19,23 +18,22 @@ const Carousel: React.FC<CarouselProps> = ({
   const [selectedMovieId, setSelectedMovieId] = useState<number | null>(null);
   const carouselRef = React.useRef<HTMLDivElement>(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const isMobile = useWindowSize();
 
-  const handleNext = () => {
-    setSelectedIndex((prev) => (prev + 1) % movies.length);
-    onMovieClickBackGround(
-      movies[(selectedIndex + 1) % movies.length].backdrop_path
-    );
-    onMovieClick(movies[(selectedIndex + 1) % movies.length]);
-  };
+  // const handleNext = () => {
+  //   setSelectedIndex((prev) => (prev + 1) % movies.length);
+  //   onMovieClickBackGround(
+  //     movies[(selectedIndex + 1) % movies.length].backdrop_path
+  //   );
+  //   onMovieClick(movies[(selectedIndex + 1) % movies.length]);
+  // };
 
-  const handlePrev = () => {
-    setSelectedIndex((prev) => (prev - 1 + movies.length) % movies.length);
-    onMovieClickBackGround(
-      movies[(selectedIndex - 1 + movies.length) % movies.length].backdrop_path
-    );
-    onMovieClick(movies[(selectedIndex - 1 + movies.length) % movies.length]);
-  };
+  // const handlePrev = () => {
+  //   setSelectedIndex((prev) => (prev - 1 + movies.length) % movies.length);
+  //   onMovieClickBackGround(
+  //     movies[(selectedIndex - 1 + movies.length) % movies.length].backdrop_path
+  //   );
+  //   onMovieClick(movies[(selectedIndex - 1 + movies.length) % movies.length]);
+  // };
 
   const scrollRight = () => {
     if (carouselRef.current) {
