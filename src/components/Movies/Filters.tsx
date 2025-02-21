@@ -1,4 +1,3 @@
-import useWindowSize from "../../hooks/useWindowsSize";
 import SelectFilters from "./SelectFilters";
 
 interface FiltersProps {
@@ -10,7 +9,6 @@ const Filters: React.FC<FiltersProps> = ({
   onSortByChange,
   onCountryChange,
 }) => {
-  const isMobile = useWindowSize();
   return (
     <div
       style={{

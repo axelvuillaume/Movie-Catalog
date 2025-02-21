@@ -17,7 +17,7 @@ const Carousel: React.FC<CarouselProps> = ({
 }) => {
   const [selectedMovieId, setSelectedMovieId] = useState<number | null>(null);
   const carouselRef = React.useRef<HTMLDivElement>(null);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  // const [selectedIndex, setSelectedIndex] = useState(0);
 
   // const handleNext = () => {
   //   setSelectedIndex((prev) => (prev + 1) % movies.length);

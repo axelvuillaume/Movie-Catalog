@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { useLocation } from "react-router-dom";
 import useWindowSize from "../hooks/useWindowsSize";
