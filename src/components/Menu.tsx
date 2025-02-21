@@ -7,7 +7,7 @@ const MenuIcon = FiMenu as unknown as React.FC;
 const CloseIcon = FiX as unknown as React.FC;
 const Menu = () => {
   const location = useLocation();
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 1085);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
