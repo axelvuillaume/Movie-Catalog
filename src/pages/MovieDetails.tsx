@@ -93,7 +93,7 @@ const MovieDetails: React.FC = () => {
           top: "7vh",
           position: "absolute",
           flexDirection: isMobile ? "column" : "row",
-          alignItems: isMobile ? "center" : "flex-start",
+          alignItems: "center",
         }}
       >
         <div
@@ -151,7 +151,7 @@ const MovieDetails: React.FC = () => {
           <div
             style={{
               fontWeight: "bold",
-              marginBottom: "3%",
+              margin: "3% 0",
             }}
           >
             STORYLINE

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import useWindowSize from "../hooks/useWindowsSize";
 import ButtonMenu from "./Menu/ButtonMenu";
 import Search from "./Search";
@@ -10,6 +10,7 @@ const Menu = () => {
   const location = useLocation();
   const isMobile = useWindowSize();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div
@@ -26,7 +27,12 @@ const Menu = () => {
       }}
     >
       <div style={{ color: "white" }}>
-        <h1 style={{ fontSize: isMobile ? "6vw" : "1.3vw" }}>TITREINSNAE</h1>
+        <h1
+          style={{ fontSize: isMobile ? "6vw" : "1.3vw", cursor: "pointer" }}
+          onClick={() => navigate("/")}
+        >
+          NO LOGO
+        </h1>
       </div>
       {!isMobile ? (
         <>

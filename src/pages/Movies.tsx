@@ -3,7 +3,6 @@ import { useSearchParams } from "react-router-dom";
 import ButtonNav from "../components/Movies/ButtonNav";
 import Card from "../components/Movies/Card";
 import Filters from "../components/Movies/Filters";
-import "../Css/Movies.css";
 import { Movie } from "../types";
 
 const Movies: React.FC = () => {
@@ -85,9 +84,28 @@ const Movies: React.FC = () => {
   };
 
   return (
-    <div className="movies-container">
+    <div
+      style={{
+        padding: "20px",
+        color: "white",
+        textAlign: "center",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        paddingTop: "5%",
+      }}
+    >
       <Filters onSortByChange={setSortby} onCountryChange={setCountry} />
-      <div className="movies-grid">
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+          gap: "20px",
+          justifyContent: "center",
+          width: "100%",
+          maxWidth: "calc(5 * 200px + 4 * 20px)",
+        }}
+      >
         {movies.map((movie) => (
           <Card key={movie.id} movie={movie} />
         ))}

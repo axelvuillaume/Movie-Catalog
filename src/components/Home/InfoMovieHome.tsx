@@ -26,7 +26,7 @@ const InfoMovieHome: React.FC<InfoMovieHomeProps> = ({ movie }) => {
       </div>
       <div
         style={{
-          fontSize: isMobile ? "4vw" : "1vw",
+          fontSize: isMobile ? "4vw" : "1.2vw",
           color: "grey",
         }}
       >
