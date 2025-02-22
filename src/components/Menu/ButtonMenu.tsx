@@ -1,21 +1,17 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import useWindowSize from "../../hooks/useWindowsSize";
 
 interface ButtonMenuProps {
   label: string;
   page: string;
   isActive: boolean;
-  isMobile: boolean;
 }
 
-const ButtonMenu: React.FC<ButtonMenuProps> = ({
-  label,
-  page,
-  isActive,
-  isMobile,
-}) => {
+const ButtonMenu: React.FC<ButtonMenuProps> = ({ label, page, isActive }) => {
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
+  const isMobile = useWindowSize();
 
   const handleClick = () => {
     navigate(page);
@@ -38,7 +34,7 @@ const ButtonMenu: React.FC<ButtonMenuProps> = ({
         onClick={handleClick}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
-      > 
+      >
         {label}
       </button>
     </div>

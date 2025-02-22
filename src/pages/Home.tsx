@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Carousel from "../components/Home/Carousel";
+import CarouselMobile from "../components/Home/CarouselMobile";
 import InfoMovieHome from "../components/Home/InfoMovieHome";
 import useWindowSize from "../hooks/useWindowsSize";
-
 import { Movie } from "../types";
 
 const Home = () => {
@@ -80,11 +80,19 @@ const Home = () => {
         {selectedMovie && <InfoMovieHome movie={selectedMovie} />}
       </div>
 
-      <Carousel
-        movies={movies}
-        onMovieClick={selectMovie}
-        onMovieClickBackGround={changeBackground}
-      />
+      {isMobile ? (
+        <CarouselMobile
+          movies={movies}
+          onMovieClick={selectMovie}
+          onMovieClickBackGround={changeBackground}
+        />
+      ) : (
+        <Carousel
+          movies={movies}
+          onMovieClick={selectMovie}
+          onMovieClickBackGround={changeBackground}
+        />
+      )}
     </div>
   );
 };

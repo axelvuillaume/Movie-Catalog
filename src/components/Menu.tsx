@@ -26,7 +26,7 @@ const Menu = () => {
       }}
     >
       <div style={{ color: "white" }}>
-        <h1 style={{ fontSize: "1.3vw" }}>TITREINSNAE</h1>
+        <h1 style={{ fontSize: isMobile ? "6vw" : "1.3vw" }}>TITREINSNAE</h1>
       </div>
       {!isMobile ? (
         <>
@@ -36,13 +36,11 @@ const Menu = () => {
               label="New Movies"
               page="/"
               isActive={location.pathname === "/"}
-              isMobile={isMobile}
             />
             <ButtonMenu
               label="Movies"
               page="/movie"
               isActive={location.pathname === "/movie"}
-              isMobile={isMobile}
             />
           </div>
         </>
@@ -80,13 +78,11 @@ const Menu = () => {
             label="New Movies"
             page="/"
             isActive={location.pathname === "/"}
-            isMobile={isMobile}
           />
           <ButtonMenu
             label="Movies"
             page="/movie"
             isActive={location.pathname === "/movie"}
-            isMobile={isMobile}
           />
         </div>
       )}

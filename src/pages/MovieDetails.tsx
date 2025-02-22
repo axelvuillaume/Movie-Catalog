@@ -101,7 +101,7 @@ const MovieDetails: React.FC = () => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            marginTop: isMobile ? "0" : "3vh",
+            marginTop: "3vh",
           }}
         >
           <div style={{ display: "flex", justifyContent: "center" }}>
