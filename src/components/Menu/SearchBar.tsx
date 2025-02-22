@@ -46,8 +46,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ onSearch }) => {
         alt="Rechercher"
         onClick={handleSubmit}
         style={{
-          width: "1.5vw",
-          height: "1.5vw",
+          width: isMobile ? "4vw" : "1.5vw",
+          height: isMobile ? "4vw" : "1.5vw",
           cursor: "pointer",
         }}
       />

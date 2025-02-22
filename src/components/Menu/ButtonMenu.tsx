@@ -6,9 +6,15 @@ interface ButtonMenuProps {
   label: string;
   page: string;
   isActive: boolean;
+  onClick: () => void;
 }
 
-const ButtonMenu: React.FC<ButtonMenuProps> = ({ label, page, isActive }) => {
+const ButtonMenu: React.FC<ButtonMenuProps> = ({
+  label,
+  page,
+  isActive,
+  onClick,
+}) => {
   const navigate = useNavigate();
   const [isHovered, setIsHovered] = useState(false);
   const isMobile = useWindowSize();
@@ -31,7 +37,10 @@ const ButtonMenu: React.FC<ButtonMenuProps> = ({ label, page, isActive }) => {
 
           textDecoration: isActive ? "underline" : "none",
         }}
-        onClick={handleClick}
+        onClick={() => {
+          handleClick();
+          onClick();
+        }}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >

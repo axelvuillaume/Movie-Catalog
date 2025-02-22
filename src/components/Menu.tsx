@@ -30,17 +30,19 @@ const Menu = () => {
       </div>
       {!isMobile ? (
         <>
-          <Search />
+          <Search onClick={() => {}} />
           <div style={{ display: "flex", gap: "6vw" }}>
             <ButtonMenu
               label="New Movies"
               page="/"
               isActive={location.pathname === "/"}
+              onClick={() => {}}
             />
             <ButtonMenu
               label="Movies"
               page="/movie"
               isActive={location.pathname === "/movie"}
+              onClick={() => {}}
             />
           </div>
         </>
@@ -57,7 +59,6 @@ const Menu = () => {
         </div>
       )}
 
-      {/* Menu déroulant */}
       {isMobile && isMenuOpen && (
         <div
           style={{
@@ -73,16 +74,18 @@ const Menu = () => {
             justifyContent: "space-evenly",
           }}
         >
-          <Search />
+          <Search onClick={() => setIsMenuOpen(!isMenuOpen)} />
           <ButtonMenu
             label="New Movies"
             page="/"
             isActive={location.pathname === "/"}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
           />
           <ButtonMenu
             label="Movies"
             page="/movie"
             isActive={location.pathname === "/movie"}
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
           />
         </div>
       )}

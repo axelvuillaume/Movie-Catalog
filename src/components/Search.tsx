@@ -4,7 +4,10 @@ import useWindowSize from "../hooks/useWindowsSize";
 import { Movie } from "../types";
 import SearchBar from "./Menu/SearchBar";
 
-const Search: React.FC = () => {
+interface SearchProps {
+  onClick: () => void;
+}
+const Search: React.FC<SearchProps> = ({ onClick }) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [movies, setMovies] = useState<Movie[]>([]);
   const [showResults, setShowResults] = useState(false);
@@ -99,7 +102,10 @@ const Search: React.FC = () => {
                   borderBottom: "1px solid rgba(255, 255, 255, 0.2)",
                   cursor: "pointer",
                 }}
-                onClick={() => handleMoreInfoClick(movie)}
+                onClick={() => {
+                  handleMoreInfoClick(movie);
+                  onClick && onClick();
+                }}
               >
                 <div style={{ fontSize: "14px", margin: "5px 0" }}>
                   {movie.title}
