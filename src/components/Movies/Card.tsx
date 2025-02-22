@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import PhotoUnknown from "../../images/UnknownFilm.jpg";
 import { Movie } from "../../types";
 
 import React, { useState } from "react";
@@ -32,7 +33,11 @@ const Card: React.FC<CardProps> = ({ movie }) => {
       onClick={handleMoreInfoClick}
     >
       <img
-        src={`https://image.tmdb.org/t/p/w780${movie.poster_path}`}
+        src={
+          movie.poster_path
+            ? `https://image.tmdb.org/t/p/w780${movie.poster_path}`
+            : `${PhotoUnknown}`
+        }
         alt={movie.title}
         style={{
           width: "100%",
