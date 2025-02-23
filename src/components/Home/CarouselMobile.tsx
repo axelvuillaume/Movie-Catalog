@@ -20,7 +20,7 @@ const CarouselMobile: React.FC<CarouselMobileProps> = ({
   const handleNext = () => {
     setSelectedIndex((prev) => (prev + 1) % movies.length);
     onMovieClickBackGround(
-      movies[(selectedIndex + 1) % movies.length].backdrop_path
+      movies[(selectedIndex + 1) % movies.length].poster_path
     );
     onMovieClick(movies[(selectedIndex + 1) % movies.length]);
   };
@@ -28,7 +28,7 @@ const CarouselMobile: React.FC<CarouselMobileProps> = ({
   const handlePrev = () => {
     setSelectedIndex((prev) => (prev - 1 + movies.length) % movies.length);
     onMovieClickBackGround(
-      movies[(selectedIndex - 1 + movies.length) % movies.length].backdrop_path
+      movies[(selectedIndex - 1 + movies.length) % movies.length].poster_path
     );
     onMovieClick(movies[(selectedIndex - 1 + movies.length) % movies.length]);
   };

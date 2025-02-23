@@ -31,7 +31,9 @@ const Home = () => {
           if (moviesData.results.length > 0) {
             const firstMovie = moviesData.results[0];
             setSelectedMovie(firstMovie);
-            changeBackground(firstMovie.backdrop_path || "");
+            changeBackground(
+              isMobile ? firstMovie.poster_path : firstMovie.backdrop_path || ""
+            );
           }
         } else {
           console.error("moviesData.results est undefined !");
