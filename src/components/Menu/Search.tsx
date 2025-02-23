@@ -1,8 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import useWindowSize from "../hooks/useWindowsSize";
-import { Movie } from "../types";
-import SearchBar from "./Menu/SearchBar";
+import useWindowSize from "../../hooks/useWindowsSize";
+import { Movie } from "../../types/Movies";
+import SearchBar from "./SearchBar";
 
 interface SearchProps {
   onClick: () => void;

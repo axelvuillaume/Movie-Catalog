@@ -3,7 +3,7 @@ import { FiMenu, FiX } from "react-icons/fi";
 import { useLocation, useNavigate } from "react-router-dom";
 import useWindowSize from "../hooks/useWindowsSize";
 import ButtonMenu from "./Menu/ButtonMenu";
-import Search from "./Search";
+import Search from "./Menu/Search";
 const MenuIcon = FiMenu as unknown as React.FC;
 const CloseIcon = FiX as unknown as React.FC;
 const Menu = () => {

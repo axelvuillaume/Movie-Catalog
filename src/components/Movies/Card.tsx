@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import PhotoUnknown from "../../images/UnknownFilm.jpg";
-import { Movie } from "../../types";
+import { Movie } from "../../types/Movies";
 
 import React, { useState } from "react";
 

@@ -1,5 +1,5 @@
 import PhotoUnknown from "../../../images/Unknown_person.jpg";
-import { CastMember } from "../../../types";
+import { CastMember } from "../../../types/Cast";
 
 interface DistributionCardProps {
   actor: CastMember;

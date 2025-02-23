@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import arrowLeft from "../../images/arrowLeft.png";
 import arrowRight from "../../images/arrowRight.png";
-import { Movie } from "../../types";
+import { Movie } from "../../types/Movies";
 import ArrowCarousel from "./Carousel/ArrowCarousel";
 
 interface CarouselMobileProps {

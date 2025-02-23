@@ -3,7 +3,8 @@ import Carousel from "../components/Home/Carousel";
 import CarouselMobile from "../components/Home/CarouselMobile";
 import InfoMovieHome from "../components/Home/InfoMovieHome";
 import useWindowSize from "../hooks/useWindowsSize";
-import { Movie } from "../types";
+import { fetchMovieNowPlaying } from "../services/moviesService";
+import { Movie } from "../types/Movies";
 
 const Home = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
@@ -20,37 +21,27 @@ const Home = () => {
   };
 
   useEffect(() => {
-    const fetchFilms = async () => {
+    const loadMovies = async () => {
       try {
-        const response = await fetch(
-          "https://api.themoviedb.org/3/movie/now_playing",
-          {
-            method: "GET",
-            headers: {
-              accept: "application/json",
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZjU5NTZkMjQ1MjkwYzU5MTljNmUxMjFlMjMwMzU2ZiIsIm5iZiI6MTczOTg4NDg4Ny4yMzUwMDAxLCJzdWIiOiI2N2I0ODk1NzVkYzk4OGIxYmI5ZmNiZmMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.38PUZIT9Z-ybX4JPzH-lFLA70DwSBVNcFxvxncRiGiw`,
-            },
+        const moviesData = await fetchMovieNowPlaying();
+
+        if (moviesData.results) {
+          setMovies(moviesData.results);
+
+          if (moviesData.results.length > 0) {
+            const firstMovie = moviesData.results[0];
+            setSelectedMovie(firstMovie);
+            changeBackground(firstMovie.backdrop_path || "");
           }
-        );
-
-        if (!response.ok) {
-          throw new Error(`Erreur HTTP: ${response.status}`);
-        }
-
-        const data = await response.json();
-        setMovies(data.results);
-
-        if (data.results.length > 0) {
-          const firstMovie = data.results[0];
-          setSelectedMovie(firstMovie);
-          changeBackground(firstMovie.backdrop_path || "");
+        } else {
+          console.error("moviesData.results est undefined !");
         }
       } catch (error) {
-        console.error("Erreur lors de la récupération des films :", error);
+        console.error("Erreur lors du chargement des films :", error);
       }
     };
 
-    fetchFilms();
+    loadMovies();
   }, []);
 
   return (

@@ -18,8 +18,7 @@ const ButtonNav: React.FC<ButtonNavProps> = ({ label, onClick }) => {
           cursor: "pointer",
         }}
       >
-        {" "}
-        {label}{" "}
+        {label}
       </button>
     </div>
   );

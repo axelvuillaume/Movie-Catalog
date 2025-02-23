@@ -12,22 +12,3 @@ export interface Movie {
   budget: number;
   production_companies: { id: number; name: string }[];
 }
-
-export interface CastMember {
-  id: number;
-  name: string;
-  character: string;
-  profile_path: string | null;
-}
-
-interface CrewMember {
-  id: number;
-  name: string;
-  job: string;
-  profile_path: string | null;
-}
-
-export interface MovieCredits {
-  cast: CastMember[];
-  crew: CrewMember[];
-}

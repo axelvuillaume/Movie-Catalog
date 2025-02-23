@@ -3,7 +3,15 @@ import { useParams } from "react-router-dom";
 import Distribution from "../components/MovieDetails/Distribution";
 import TableDetails from "../components/MovieDetails/TableDetails";
 import useWindowSize from "../hooks/useWindowsSize";
-import { Movie, MovieCredits } from "../types";
+import {
+  fetchMovieCredits,
+  fetchMovieDetails,
+  fetchMovieVideos,
+} from "../services/moviesService";
+import { MovieCredits } from "../types/Credits";
+import { Movie } from "../types/Movies";
+import { MovieVideo } from "../types/Video";
+
 const MovieDetails: React.FC = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState<Movie | null>(null);
@@ -12,57 +20,25 @@ const MovieDetails: React.FC = () => {
   const isMobile = useWindowSize();
 
   useEffect(() => {
-    const fetchMovieDetails = async () => {
+    const loadMovieData = async () => {
       try {
-        const movieResponse = await fetch(
-          `https://api.themoviedb.org/3/movie/${id}?language=en-US`,
-          {
-            method: "GET",
-            headers: {
-              accept: "application/json",
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZjU5NTZkMjQ1MjkwYzU5MTljNmUxMjFlMjMwMzU2ZiIsIm5iZiI6MTczOTg4NDg4Ny4yMzUwMDAxLCJzdWIiOiI2N2I0ODk1NzVkYzk4OGIxYmI5ZmNiZmMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.38PUZIT9Z-ybX4JPzH-lFLA70DwSBVNcFxvxncRiGiw`, // Votre token d'authentification
-            },
-          }
-        );
-        const movieData = await movieResponse.json();
+        const movieData = await fetchMovieDetails(id!);
         setMovie(movieData);
 
-        const videoResponse = await fetch(
-          `https://api.themoviedb.org/3/movie/${id}/videos?language=en-US`,
-          {
-            method: "GET",
-            headers: {
-              accept: "application/json",
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZjU5NTZkMjQ1MjkwYzU5MTljNmUxMjFlMjMwMzU2ZiIsIm5iZiI6MTczOTg4NDg4Ny4yMzUwMDAxLCJzdWIiOiI2N2I0ODk1NzVkYzk4OGIxYmI5ZmNiZmMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.38PUZIT9Z-ybX4JPzH-lFLA70DwSBVNcFxvxncRiGiw`, // Votre token d'authentification
-            },
-          }
+        const videos: MovieVideo[] = await fetchMovieVideos(id!);
+        const trailer = videos.find(
+          (video) => video.type === "Trailer" && video.site === "YouTube"
         );
-        const videoData = await videoResponse.json();
-        const trailer = videoData.results.find(
-          (video: any) => video.type === "Trailer" && video.site === "YouTube"
-        );
-        if (trailer) {
-          setTrailerKey(trailer.key);
-        }
+        if (trailer) setTrailerKey(trailer.key);
 
-        const creditsResponse = await fetch(
-          `https://api.themoviedb.org/3/movie/${id}/credits`,
-          {
-            method: "GET",
-            headers: {
-              accept: "application/json",
-              Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZjU5NTZkMjQ1MjkwYzU5MTljNmUxMjFlMjMwMzU2ZiIsIm5iZiI6MTczOTg4NDg4Ny4yMzUwMDAxLCJzdWIiOiI2N2I0ODk1NzVkYzk4OGIxYmI5ZmNiZmMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.38PUZIT9Z-ybX4JPzH-lFLA70DwSBVNcFxvxncRiGiw`, // Votre token d'authentification
-            },
-          }
-        );
-        const creditsData = await creditsResponse.json();
+        const creditsData = await fetchMovieCredits(id!);
         setCredits(creditsData);
       } catch (error) {
-        console.error("Error fetching movie details:", error);
+        console.error("Erreur lors du chargement des données du film :", error);
       }
     };
 
-    fetchMovieDetails();
+    loadMovieData();
   }, [id]);
 
   if (!movie) {

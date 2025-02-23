@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useWindowSize from "../../hooks/useWindowsSize";
-import { Movie } from "../../types";
+import { Movie } from "../../types/Movies";
 interface InfoMovieHomeProps {
   movie: Movie;
 }
