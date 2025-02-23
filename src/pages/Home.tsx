@@ -44,7 +44,7 @@ const Home = () => {
     };
 
     loadMovies();
-  }, []);
+  }, [isMobile]);
 
   return (
     <div
