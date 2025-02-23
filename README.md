@@ -10,17 +10,15 @@ Une application React permettant d'afficher des films populaires, les détails d
 
 🔎 Recherche de films
 
-🌟 Affichage des films en salle actuellement
-
 🚀 Installation & Exécution
 
 
-🛠 Technologies utilisées
-
-React ⚛️
-
-TypeScript 📝
-
-TMDB API 🎬
+🛠 Technologies utilisées :
+  
+  React ⚛️
+  
+  TypeScript 📝
+  
+  TMDB API 🎬
 
 
