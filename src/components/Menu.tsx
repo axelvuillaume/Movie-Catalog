@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FiMenu, FiX } from "react-icons/fi";
 import { useLocation, useNavigate } from "react-router-dom";
 import useWindowSize from "../hooks/useWindowsSize";
+import logo from "../images/logo2.png";
 import ButtonMenu from "./Menu/ButtonMenu";
 import Search from "./Menu/Search";
 const MenuIcon = FiMenu as unknown as React.FC;
@@ -27,12 +28,16 @@ const Menu = () => {
       }}
     >
       <div style={{ color: "white" }}>
-        <h1
-          style={{ fontSize: isMobile ? "6vw" : "1.3vw", cursor: "pointer" }}
+        <div
+          style={{ display: " flex", cursor: "pointer" }}
           onClick={() => navigate("/")}
         >
-          NO LOGO
-        </h1>
+          <img
+            style={{ width: isMobile ? "30vw" : "8vw" }}
+            src={logo}
+            alt="Logo"
+          />
+        </div>
       </div>
       {!isMobile ? (
         <>
