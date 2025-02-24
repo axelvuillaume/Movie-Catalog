@@ -14,13 +14,15 @@ Une application React permettant d'afficher des films populaires, les détails d
 
 🚀 Installation & Exécution
 
+📱 Responsive / Mobile
+
 
 🛠 Technologies utilisées :
-  
-  React ⚛️
-  
-  TypeScript 📝
-  
-  TMDB API 🎬
+
+ - React ⚛️
+
+ - TypeScript 📝
+
+ - TMDB API 🎬
 
 
