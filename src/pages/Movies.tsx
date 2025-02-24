@@ -1,4 +1,3 @@
-// src/pages/Movies.tsx
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import ButtonNav from "../components/Movies/ButtonNav";
@@ -55,7 +54,13 @@ const Movies: React.FC = () => {
         paddingTop: "5%",
       }}
     >
-      <Filters onSortByChange={setSortby} onCountryChange={setCountry} />
+      <Filters
+        onSortByChange={setSortby}
+        onCountryChange={setCountry}
+        selectedSortBy={sortby}
+        selectedCountry={country}
+      />
+
       <div
         style={{
           display: "grid",

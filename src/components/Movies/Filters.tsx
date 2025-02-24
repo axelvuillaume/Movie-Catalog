@@ -3,11 +3,15 @@ import SelectFilters from "./SelectFilters";
 interface FiltersProps {
   onSortByChange: (sortbyValue: string) => void;
   onCountryChange: (countryValue: string) => void;
+  selectedSortBy: string;
+  selectedCountry: string;
 }
 
 const Filters: React.FC<FiltersProps> = ({
   onSortByChange,
   onCountryChange,
+  selectedSortBy,
+  selectedCountry,
 }) => {
   return (
     <div
@@ -26,11 +30,13 @@ const Filters: React.FC<FiltersProps> = ({
         ]}
         label="Sort by : "
         onChange={onSortByChange}
+        value={selectedSortBy}
       />
       <SelectFilters
         options={["All", "US", "FR", "GB"]}
         label="Country : "
         onChange={onCountryChange}
+        value={selectedCountry}
       />
     </div>
   );

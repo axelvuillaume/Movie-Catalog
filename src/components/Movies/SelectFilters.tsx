@@ -2,12 +2,14 @@ interface SelectFiltersProps {
   options: string[];
   label: string;
   onChange: (value: string) => void;
+  value: string;
 }
 
 const SelectFilters: React.FC<SelectFiltersProps> = ({
   options,
   label,
   onChange,
+  value,
 }) => {
   return (
     <div
@@ -21,6 +23,7 @@ const SelectFilters: React.FC<SelectFiltersProps> = ({
     >
       <p>{label}</p>
       <select
+        value={value}
         onChange={(e) => onChange(e.target.value)}
         style={{
           border: "none",
