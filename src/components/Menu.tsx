@@ -37,7 +37,7 @@ const Menu = () => {
       {!isMobile ? (
         <>
           <Search onClick={() => {}} />
-          <div style={{ display: "flex", gap: "6vw" }}>
+          <div style={{ display: "flex" }}>
             <ButtonMenu
               label="New Movies"
               page="/"

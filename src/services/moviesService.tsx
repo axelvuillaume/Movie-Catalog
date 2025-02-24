@@ -1,6 +1,6 @@
 const BASE_URL = "https://api.themoviedb.org/3";
-const API_KEY =
-  "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyZjU5NTZkMjQ1MjkwYzU5MTljNmUxMjFlMjMwMzU2ZiIsIm5iZiI6MTczOTg4NDg4Ny4yMzUwMDAxLCJzdWIiOiI2N2I0ODk1NzVkYzk4OGIxYmI5ZmNiZmMiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.38PUZIT9Z-ybX4JPzH-lFLA70DwSBVNcFxvxncRiGiw";
+const API_KEY = `Bearer ${process.env.REACT_APP_API_KEY ?? ""}`;
+console.log("API Key:", process.env.REACT_APP_API_KEY);
 
 const fetchFromAPI = async (endpoint: string) => {
   try {
