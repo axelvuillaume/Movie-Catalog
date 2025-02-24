@@ -14,6 +14,8 @@ Une application React permettant d'afficher des films populaires, les détails d
 
 🚀 Installation & Exécution
 
+📱 Responsive / Mobile
+
 
 🛠 Technologies utilisées :
   
