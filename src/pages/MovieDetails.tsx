@@ -25,13 +25,18 @@ const MovieDetails: React.FC = () => {
         const movieData = await fetchMovieDetails(id!);
         setMovie(movieData);
 
-        const videos: MovieVideo[] = await fetchMovieVideos(id!);
+        if (!id) {
+          console.error("L'ID du film est invalide.");
+          return;
+        }
+
+        const videos: MovieVideo[] = await fetchMovieVideos(id);
         const trailer = videos.find(
           (video) => video.type === "Trailer" && video.site === "YouTube"
         );
         if (trailer) setTrailerKey(trailer.key);
+        const creditsData = await fetchMovieCredits(id);
 
-        const creditsData = await fetchMovieCredits(id!);
         setCredits(creditsData);
       } catch (error) {
         console.error("Erreur lors du chargement des données du film :", error);
